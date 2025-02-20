@@ -30,5 +30,5 @@
         { "id": 5, "title": "Catfish Nuggets", "price": 6.75 },
         { "id": 6, "title": "Mini Souvlaki", "price": 5.20 }
     ],
-    "purchases": []
+    "orders": []
 }
