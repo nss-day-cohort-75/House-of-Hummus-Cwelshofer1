@@ -6,16 +6,13 @@ const handleSideChange = (changeEvent) => {
 
     }
 }
-
 export const sideOptions = async () => {
     document.addEventListener("change", handleSideChange)
     const response = await fetch("http://localhost:8088/sides")
     const sides = await response.json()
-
     let sideHTML = ""
 
     sideHTML += "<h2>Sides</h2>"
-
     const sideStringArray = sides.map(
         (side) => {
             return `<div><input type='radio' name='side' value='${side.id}' /> ${side.title} </div>`

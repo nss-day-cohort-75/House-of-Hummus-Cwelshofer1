@@ -6,9 +6,6 @@ const handleEntreeChange = (changeEvent) => {
     }
 }
 
-
-
-
 export const entreeOptions = async () => {
     document.addEventListener("change", handleEntreeChange )
     const response = await fetch("http://localhost:8088/entrees")
