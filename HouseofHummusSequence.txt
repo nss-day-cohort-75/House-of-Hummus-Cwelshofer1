@@ -1,0 +1,59 @@
+title House of Hummus
+participant DOM
+participant Main.js
+participant FoodTruck.js
+participant Entrees.js
+participant Vegetables.js
+participant Vegetables.js
+participant SideDishes.js
+participant PurchaseButton.js
+participant Sales.js
+participant TransientState.js
+participant database.json
+
+
+
+Main.js->FoodTruck.js: Requests HTML data
+FoodTruck.js->Entrees.js: Requests HTML data
+Entrees.js->database.json: Requests entrees array data
+database.json-->Entrees.js: Returns entrees array data
+Entrees.js-->FoodTruck.js:Returns HTML data
+FoodTruck.js->Vegetables.js:Requests HTML data
+Vegetables.js->database.json:Requests vegetables array data
+database.json-->Vegetables.js: Returns vegetables array data
+Vegetables.js-->FoodTruck.js: Returns HTML data
+FoodTruck.js->SideDishes.js: Requests HTML data
+SideDishes.js->database.json: Requests sidedishes array data
+database.json-->SideDishes.js: Returns sidedishes array
+SideDishes.js-->FoodTruck.js: Returns HTML data
+FoodTruck.js->PurchaseButton.js:Requests HTML data
+PurchaseButton.js -->FoodTruck.js:Returns HTML button data
+FoodTruck.js->Sales.js: Requests HMTL data
+Sales.js->database.json: Requests orders array data
+database.json-->Sales.js: Returns order array data
+Sales.js-->FoodTruck.js: Returns HTML data
+FoodTruck.js -->Main.js: Returns HTML data
+//This is where User events start
+Entrees.js<--DOM:User selects entree via radio buttons
+Entrees.js->TransientState.js: Updates entrees selection
+TransientState.js->FoodTruck.js: Updates HTML data
+FoodTruck.js->Main.js: Returns HTML data
+Main.js-->DOM:HTML section rendered
+Vegetables.js<--DOM:User selects vegetables via radio buttons
+Vegetables.js->TransientState.js: Updates vegetables selection
+TransientState.js->FoodTruck.js: Updates HTML data
+FoodTruck.js->Main.js: Returns HTML data
+Main.js-->DOM:HTML section rendered
+SideDishes.js<--DOM:User selects sidedishes via radio buttons
+SideDishes.js->TransientState.js: Updates sidedishes selection
+TransientState.js->FoodTruck.js: Updates HTML data
+FoodTruck.js->Main.js: Returns HTML data
+Main.js-->DOM:HTML section rendered
+DOM->PurchaseButton.js: User clicks on purchase button
+PurchaseButton.js->TransientState.js: Prepare for POST operation
+TransientState.js->database.json: POST
+database.json-->TransientState.js: resolve POST
+TransientState.js->FoodTruck.js:Return Post data
+FoodTruck.js->Main.js: Updates Post data
+Main.js-> DOM: Rerenders page
+
